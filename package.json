@@ -1,0 +1,11 @@
+{
+  "name": "processo-info-sistemas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/icaroalbar/processo-info-sistemas.git",
+  "author": "Icaro Albar <icaro.albar@live.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
