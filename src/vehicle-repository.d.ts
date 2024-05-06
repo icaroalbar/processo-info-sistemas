@@ -7,6 +7,12 @@ declare interface IVehicle {
   year: string;
 }
 
+declare interface IVehicleId {
+  id: string;
+}
+
+declare type IVehicleUpdate = IVehicle & IVehicleId;
+
 declare interface VehicleRepository {
   create(vehicle: Vehicle): Promise<void>;
 }
