@@ -1,3 +1,9 @@
+import { IVehicle } from "./vehicle-repository";
+
 export class Vehicle {
-  constructor(public props: IVehicle) {}
+  public props: Required<IVehicle>;
+
+  constructor(props: IVehicle) {
+    this.props = { ...props };
+  }
 }
