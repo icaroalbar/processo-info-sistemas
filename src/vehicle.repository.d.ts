@@ -10,5 +10,4 @@ declare interface Vehicle {
 
 declare interface VehicleRepository {
   create(vehicle: Vehicle): Promise<void>;
-  findById(id: string): Promise<Vehicle | null>;
 }
