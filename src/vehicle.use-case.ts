@@ -3,8 +3,9 @@ import { Vehicle } from "./vehicle.entities";
 export class CreateVehicle {
   constructor(private vehicleRepository: VehicleRepository) {}
 
-  async execute(input: IVehicle): Promise<void> {
+  async execute(input: IVehicle): Promise<number> {
     const vehicle = new Vehicle(input);
-    await this.vehicleRepository.create(vehicle.props);
+    const result = await this.vehicleRepository.create(vehicle.props);
+    return result;
   }
 }

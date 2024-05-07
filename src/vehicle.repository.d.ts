@@ -14,5 +14,5 @@ declare interface IVehicleId {
 declare type IVehicleUpdate = IVehicle & IVehicleId;
 
 declare interface VehicleRepository {
-  create(vehicle: IVehicle): Promise<void>;
+  create(vehicle: IVehicle): Promise<number>;
 }
