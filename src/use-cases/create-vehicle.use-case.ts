@@ -1,4 +1,4 @@
-import { Vehicle } from "./vehicle.entities";
+import { Vehicle } from "../entities/vehicle.entities";
 
 export class CreateVehicle {
   constructor(private vehicleRepository: VehicleRepository) {}

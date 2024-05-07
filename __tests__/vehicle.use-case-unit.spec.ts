@@ -1,5 +1,5 @@
-import { VehicleInMemoryRepository } from "../src/vehicle-in-memory.repository";
-import { Vehicle } from "../src/vehicle.entities";
+import { VehicleInMemoryRepository } from "../src/infrastructure/database/vehicle-in-memory.repository";
+import { Vehicle } from "../src/entities/vehicle.entities";
 
 describe("Vehicle CRUD", () => {
   it("Create", async () => {
