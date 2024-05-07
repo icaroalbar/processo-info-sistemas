@@ -22,4 +22,21 @@ export class PgVehicleRepository {
       (await pool.connect()).release(true);
     }
   }
+
+  async findAll(): Promise<IVehicle[]> {
+    try {
+      const query = `SELECT 
+      plate,
+      chassis,
+      renavam,
+      model,
+      brand,
+      year FROM vehicle`;
+
+      const result = await pool.query(query);
+      return result.rows;
+    } finally {
+      (await pool.connect()).release(true);
+    }
+  }
 }
