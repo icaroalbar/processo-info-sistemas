@@ -1,14 +1,13 @@
-import { Vehicle } from "../src/vehicle-entities";
-import { IVehicle } from "../src/vehicle-repository";
+import { Vehicle } from "../src/vehicle.entities";
 
 describe("Vehicle tests", () => {
   it("Constructor", () => {
     const input: IVehicle = {
-      plate: "ABC1234",
-      chassis: "12345678901234567",
-      renavam: "12345678901",
-      model: "Corolla",
-      brand: "Toyota",
+      plate: "ABC1D23",
+      chassis: "9BWHE21JX24060960",
+      renavam: "00123456789",
+      model: "corolla",
+      brand: "toyota",
       year: 2023,
     };
     const vehicle = new Vehicle(input);

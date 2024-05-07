@@ -1,4 +1,4 @@
-export interface IVehicle {
+declare interface IVehicle {
   plate: string;
   chassis: string;
   renavam: string;
@@ -7,12 +7,12 @@ export interface IVehicle {
   year: number;
 }
 
-export interface IVehicleId {
+declare interface IVehicleId {
   id: string;
 }
 
-export type IVehicleUpdate = IVehicle & IVehicleId;
+declare type IVehicleUpdate = IVehicle & IVehicleId;
 
-export interface VehicleRepository {
+declare interface VehicleRepository {
   create(vehicle: IVehicle): Promise<void>;
 }
