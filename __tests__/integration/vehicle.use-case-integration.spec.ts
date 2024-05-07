@@ -1,5 +1,5 @@
-import { PgVehicleRepository } from "../src/infrastructure/database/database.repository";
-import { CreateVehicle } from "../src/use-cases/create-vehicle.use-case";
+import { PgVehicleRepository } from "../../src/infrastructure/database/database.repository";
+import { CreateVehicle } from "../../src/use-cases/create-vehicle.use-case";
 
 describe("Vehicle CRUD", () => {
   it("Create", async () => {

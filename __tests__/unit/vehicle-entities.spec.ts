@@ -1,4 +1,4 @@
-import { Vehicle } from "../src/entities/vehicle.entities";
+import { Vehicle } from "../../src/entities/vehicle.entities";
 
 describe("Vehicle tests", () => {
   it("Constructor", () => {
