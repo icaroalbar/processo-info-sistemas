@@ -12,4 +12,8 @@ export class VehicleInMemoryRepository implements VehicleRepository {
   async delete(chassi: string): Promise<void> {
     chassi;
   }
+
+  async update(vehicle: IVehicle): Promise<void> {
+    this.vehicles.push(vehicle);
+  }
 }

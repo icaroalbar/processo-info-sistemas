@@ -18,13 +18,28 @@ describe("Vehicle CRUD", () => {
     expect(repository.vehicles).toStrictEqual([input]);
   });
 
+  it("Update", async () => {
+    const repository = new VehicleInMemoryRepository();
+    const input: IVehicle = {
+      plate: "ABC1D23",
+      chassis: "9BWHE21JX24060962",
+      renavam: "00123456789",
+      model: "chevrolet",
+      brand: "corsa",
+      year: 2022,
+    };
+    await repository.update(input);
+    expect(repository.vehicles).toHaveLength(1);
+    expect(repository.vehicles).toStrictEqual([input]);
+  });
+
   it("Find All vehicles", async () => {
     const repository = new VehicleInMemoryRepository();
     await repository.findAll();
     expect(repository.vehicles).toStrictEqual([]);
   });
 
-  it("Delete vehicle", async () => {
+  it("Delete", async () => {
     const input = {
       chassis: String("9BWHE21JX24060961"),
     };
