@@ -22,7 +22,7 @@ describe("Vehicle CRUD", () => {
     const repository = new VehicleInMemoryRepository();
     const input: IVehicle = {
       plate: "ABC1D23",
-      chassis: "9BWHE21JX24060962",
+      chassis: "9BWHE21JX24060961",
       renavam: "00123456789",
       model: "chevrolet",
       brand: "corsa",
