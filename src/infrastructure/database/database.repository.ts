@@ -1,11 +1,11 @@
 import pool from "./database-connection";
 
 export class PgVehicleRepository {
-  async create(vehicle: IVehicle): Promise<number> {
+  async create(vehicle: IVehicle): Promise<void> {
     try {
       const query = `
       INSERT INTO vehicle (plate, chassis, renavam, model, brand, year)
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id
+      VALUES ($1, $2, $3, $4, $5, $6)
     `;
       const values = [
         vehicle.plate,
@@ -16,8 +16,7 @@ export class PgVehicleRepository {
         vehicle.year,
       ];
 
-      const result = await pool.query(query, values);
-      return result.rows[0].id;
+      await pool.query(query, values);
     } finally {
       (await pool.connect()).release(true);
     }
@@ -35,6 +34,20 @@ export class PgVehicleRepository {
 
       const result = await pool.query(query);
       return result.rows;
+    } finally {
+      (await pool.connect()).release(true);
+    }
+  }
+
+  async delete(chassis: string): Promise<void> {
+    console.log(chassis);
+    try {
+      const query = `
+      DELETE FROM vehicle WHERE chassis = $1
+    `;
+      const values = [chassis];
+
+      await pool.query(query, values);
     } finally {
       (await pool.connect()).release(true);
     }
