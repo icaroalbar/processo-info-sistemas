@@ -3,6 +3,7 @@ import {
   createVehicleHandler,
   findAllVehiclesHandler,
   deleteVehicleHandler,
+  updateVehicleHandler,
 } from "../../interfaces/controllers";
 
 const router: Router = express.Router();
@@ -26,6 +27,18 @@ router.get("/", async (_req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).send({ error: "Erro ao listar os veículos" });
+  }
+});
+
+router.patch("/", async (req: Request, res: Response) => {
+  try {
+    updateVehicleHandler(req);
+    res
+      .status(200)
+      .send({ message: "Veículo será atualizado em nossa base de dados" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: "Erro ao adicionar o veículo" });
   }
 });
 
