@@ -51,4 +51,25 @@ export class PgVehicleRepository {
       (await pool.connect()).release(true);
     }
   }
+
+  async update(vehicle: IVehicle): Promise<void> {
+    try {
+      const query = `
+      UPDATE vehicle SET plate=$1, renavam=$2, model=$3, brand=$4, year=$5
+      WHERE chassis=$6
+    `;
+      const values = [
+        vehicle.plate,
+        vehicle.renavam,
+        vehicle.model,
+        vehicle.brand,
+        vehicle.year,
+        vehicle.chassis,
+      ];
+
+      await pool.query(query, values);
+    } finally {
+      (await pool.connect()).release(true);
+    }
+  }
 }

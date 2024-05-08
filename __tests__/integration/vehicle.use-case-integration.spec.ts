@@ -2,6 +2,7 @@ import { PgVehicleRepository } from "../../src/infrastructure/database/database.
 import { CreateVehicle } from "../../src/use-cases/create-vehicle.use-case";
 import { DeleteVehicle } from "../../src/use-cases/delete-vehicle.use-case";
 import { FindAllVehicles } from "../../src/use-cases/find-all-vehicles.use-case";
+import { UpdateVehicle } from "../../src/use-cases/update-vehicle.use-case";
 
 describe("Vehicle CRUD", () => {
   const input: IVehicle = {
@@ -33,6 +34,21 @@ describe("Vehicle CRUD", () => {
       expect(vehicle).toHaveProperty("brand");
       expect(vehicle).toHaveProperty("year");
     });
+  });
+
+  it("Update vehicle", async () => {
+    const input: IVehicle = {
+      plate: "ABC1D23",
+      chassis: "9BWHE21JX24060961",
+      renavam: "00123456789",
+      model: "chevrolet",
+      brand: "corsa",
+      year: 2022,
+    };
+    const vehicleRepository = new PgVehicleRepository();
+    const createVehicle = new UpdateVehicle(vehicleRepository);
+    const result = await createVehicle.execute(input);
+    expect(result).resolves.not.toThrow;
   });
 
   afterAll(async () => {
