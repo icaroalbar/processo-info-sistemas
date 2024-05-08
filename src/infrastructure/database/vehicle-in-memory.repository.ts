@@ -9,6 +9,6 @@ export class VehicleInMemoryRepository implements VehicleRepository {
   }
 
   async delete(chassi: string): Promise<void> {
-    console.log(chassi);
+    chassi;
   }
 }
