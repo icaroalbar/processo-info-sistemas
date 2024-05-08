@@ -7,13 +7,8 @@ declare interface IVehicle {
   year: number;
 }
 
-declare interface IVehicleId {
-  id: string;
-}
-
-declare type IVehicleUpdate = IVehicle & IVehicleId;
-
 declare interface VehicleRepository {
-  create(vehicle: IVehicle): Promise<number>;
+  create(vehicle: IVehicle): Promise<void>;
   findAll(): Promise<IVehicle[]>;
+  delete(chassis: string): Promise<void>;
 }
