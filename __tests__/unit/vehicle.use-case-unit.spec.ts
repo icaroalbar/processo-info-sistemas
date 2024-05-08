@@ -1,5 +1,5 @@
-import { VehicleInMemoryRepository } from "../src/infrastructure/database/vehicle-in-memory.repository";
-import { Vehicle } from "../src/entities/vehicle.entities";
+import { VehicleInMemoryRepository } from "../../src/infrastructure/database/vehicle-in-memory.repository";
+import { Vehicle } from "../../src/entities/vehicle.entities";
 
 describe("Vehicle CRUD", () => {
   it("Create", async () => {
@@ -16,5 +16,11 @@ describe("Vehicle CRUD", () => {
     await repository.create(vehicle.props);
     expect(repository.vehicles).toHaveLength(1);
     expect(repository.vehicles).toStrictEqual([input]);
+  });
+
+  it("Find All vehicles", async () => {
+    const repository = new VehicleInMemoryRepository();
+    await repository.findAll();
+    expect(repository.vehicles).toStrictEqual([]);
   });
 });

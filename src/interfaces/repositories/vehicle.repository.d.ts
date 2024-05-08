@@ -15,4 +15,5 @@ declare type IVehicleUpdate = IVehicle & IVehicleId;
 
 declare interface VehicleRepository {
   create(vehicle: IVehicle): Promise<number>;
+  findAll(): Promise<IVehicle[]>;
 }
