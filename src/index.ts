@@ -1,7 +1,7 @@
-import express from "express";
+import express, { Express } from "express";
 import routes from "./routers/routes";
 
-export const app = express();
+export const app: Express = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
