@@ -40,7 +40,6 @@ export class PgVehicleRepository {
   }
 
   async delete(chassis: string): Promise<void> {
-    console.log(chassis);
     try {
       const query = `
       DELETE FROM vehicle WHERE chassis = $1

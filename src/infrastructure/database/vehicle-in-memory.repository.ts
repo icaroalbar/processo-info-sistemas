@@ -8,7 +8,7 @@ export class VehicleInMemoryRepository implements VehicleRepository {
     return this.vehicles;
   }
 
-  async delete(chassi: IVehicleId): Promise<void> {
+  async delete(chassi: string): Promise<void> {
     console.log(chassi);
   }
 }

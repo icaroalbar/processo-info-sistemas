@@ -6,7 +6,7 @@ describe("Vehicle CRUD", () => {
     const repository = new VehicleInMemoryRepository();
     const input: IVehicle = {
       plate: "ABC1D23",
-      chassis: "9BWHE21JX24060960",
+      chassis: "9BWHE21JX24060961",
       renavam: "00123456789",
       model: "corolla",
       brand: "toyota",
@@ -22,5 +22,14 @@ describe("Vehicle CRUD", () => {
     const repository = new VehicleInMemoryRepository();
     await repository.findAll();
     expect(repository.vehicles).toStrictEqual([]);
+  });
+
+  it("Delete vehicle", async () => {
+    const input = {
+      chassis: String("9BWHE21JX24060961"),
+    };
+    const repository = new VehicleInMemoryRepository();
+    await repository.delete(input.chassis);
+    expect(repository.vehicles).resolves.not.toThrow;
   });
 });
