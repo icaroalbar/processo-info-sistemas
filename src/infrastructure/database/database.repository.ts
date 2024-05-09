@@ -17,6 +17,8 @@ export class PgVehicleRepository {
       ];
 
       await pool.query(query, values);
+    } catch (error: any) {
+      throw error;
     } finally {
       (await pool.connect()).release(true);
     }
@@ -34,6 +36,8 @@ export class PgVehicleRepository {
 
       const result = await pool.query(query);
       return result.rows;
+    } catch (error: any) {
+      throw error;
     } finally {
       (await pool.connect()).release(true);
     }
@@ -47,6 +51,8 @@ export class PgVehicleRepository {
       const values = [chassis];
 
       await pool.query(query, values);
+    } catch (error: any) {
+      throw error;
     } finally {
       (await pool.connect()).release(true);
     }
@@ -68,6 +74,8 @@ export class PgVehicleRepository {
       ];
 
       await pool.query(query, values);
+    } catch (error: any) {
+      throw error;
     } finally {
       (await pool.connect()).release(true);
     }

@@ -8,19 +8,17 @@ export async function createOrUpdateVehicleHandler(
   const input: IVehicle = req.body as IVehicle;
 
   const vehicleRepository = new PgVehicleRepository();
+
+  let result: any;
+
+  console.log(req.method);
+
   if (req.method === "POST") {
-    const createVehicle = new CreateVehicle(vehicleRepository);
-    return await createVehicle.execute(input);
+    result = new CreateVehicle(vehicleRepository);
   }
-
   if (req.method === "PATCH") {
-    const createVehicle = new UpdateVehicle(vehicleRepository);
-    return await createVehicle.execute(input);
+    result = new UpdateVehicle(vehicleRepository);
   }
 
-  try {
-  } catch (error) {
-    console.error(error);
-    throw new Error("Houve algum erro");
-  }
+  await result.execute(input);
 }

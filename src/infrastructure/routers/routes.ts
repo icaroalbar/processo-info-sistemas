@@ -9,13 +9,19 @@ const router: Router = express.Router();
 
 router.post("/", async (req: Request, res: Response) => {
   try {
-    createOrUpdateVehicleHandler(req);
+    await createOrUpdateVehicleHandler(req);
     res
       .status(201)
       .send({ message: "Veículo será adicionado em nossa base de dados" });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    res.status(500).send({ error: "Erro ao adicionar o veículo" });
+    if (error.code === "23505") {
+      res.status(409).send({
+        error: "Já existe veículo com o mesmo valor de placa ou chassi",
+      });
+    } else {
+      res.status(500).send({ error: error.message });
+    }
   }
 });
 
@@ -25,19 +31,24 @@ router.get("/", async (_req: Request, res: Response) => {
     res.status(200).send(result);
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: "Erro ao listar os veículos" });
   }
 });
 
 router.patch("/", async (req: Request, res: Response) => {
   try {
-    createOrUpdateVehicleHandler(req);
+    await createOrUpdateVehicleHandler(req);
     res
       .status(200)
       .send({ message: "Veículo será atualizado em nossa base de dados" });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    res.status(500).send({ error: "Erro ao adicionar o veículo" });
+    if (error.code === "23505") {
+      res.status(409).send({
+        error: "Já existe veículo com o mesmo valor de placa ou chassi",
+      });
+    } else {
+      res.status(500).send({ error: error.message });
+    }
   }
 });
 
@@ -47,9 +58,9 @@ router.delete("/:chassis", async (req: Request, res: Response) => {
     res
       .status(200)
       .send({ message: "Veículo será deletado de nossa base de dados" });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    res.status(500).send({ error: "Erro ao deletar o veículo" });
+    res.status(500).send({ error: error.message });
   }
 });
 

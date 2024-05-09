@@ -9,10 +9,5 @@ export async function deleteVehicleHandler(req: Request): Promise<void> {
   const vehicleRepository = new PgVehicleRepository();
   const deleteVehicle = new DeleteVehicle(vehicleRepository);
 
-  try {
-    return await deleteVehicle.execute(input.chassis);
-  } catch (error) {
-    console.error(error);
-    throw new Error("Erro ao deletar veículo");
-  }
+  return await deleteVehicle.execute(input.chassis);
 }
